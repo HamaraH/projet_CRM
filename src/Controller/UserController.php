@@ -58,26 +58,6 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/login", name="login")
-     */
-    public function index(): Response
-    {
-        return $this->render('user/login.twig', [
-            'controller_name' => 'UserController',
-        ]);
-    }
-
-
-    /**
-     * @Route("/logout", name="logout")
-     */
-    public function logout(): Response
-    {
-        return $this->render('user/index.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
-    }
-
+    // la route de connexion (login) et déconnexion (logout) sans gérées automatiquement dans le SecurityControlle
 
 }

@@ -4,5 +4,49 @@
 
 {% block body %}
 
+    <form action ="{{ path('app_login') }}" method="POST"><div id="account">
 
+
+            <div class="row d-flex align-items-center">
+                <div class="col-3 form_label">
+                    <label class="form_label col-form-label col-form-label-lg required" for="account_email">Adresse mail</label>:
+                </div>
+                <div class="col-6 d-flex align-items-center">
+                    <input placeholder="E-mail" required name="email" type="text" class="form-control form-control form_field">
+                </div>
+
+
+                <br/>
+                <div class="col-3"></div>
+                <br/>
+            </div>
+
+
+            <div class="row d-flex align-items-center">
+                <div class="col-3 form_label">
+                    <label class="form_label col-form-label col-form-label-lg required" for="account_password">Mot de passe</label>:
+                </div>
+                <div class="col-6 d-flex align-items-center">
+                    <input required name="password" type="password" class="form-control form-control form_field"/>
+                </div>
+
+
+                <br/>
+                <div class="col-3"></div>
+                <br/>
+            </div>
+
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4 text-center">
+                    <button type="submit" class="btn form_submit_btn btn-lg">Se connecter</button>
+                </div>
+                <div class="col-4"></div>
+
+            </div>
+        </div>
+    </form>
 {% endblock %}

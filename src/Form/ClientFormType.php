@@ -14,32 +14,65 @@ class ClientFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder
-            ->setMethod('POST')
-            ->add('societe', TextType::class, [
-                'required' => true,
-                'label' => 'Societe'
-            ])
-            ->add('lastName', TextType::class, [
-                'required' => true,
-                'label' => "Nom"
-            ])
-            ->add('firstName', TextType::class, [
-                'required' => true,
-                'label' => 'Prénom'
-            ])
-            ->add('email', EmailType::class, [
-                'required' => true,
-                'label' => "E-mail"
-            ])
-            ->add('telephone', TextType::class, [
-                'required' => true,
-                'label' => 'Numéro de téléphone'
-            ])
-            ->add('Submit', SubmitType::class, [
-                'label' => "S'inscrire"
-            ])
-        ;
+        // modification d'un client -> le client est passé en paramètre dans options[data]
+       if(isset($options['data'])){
+
+           $builder
+               ->setMethod('POST')
+               ->add('societe', TextType::class, [
+                   'required' => true,
+                   'label' => 'Societe'
+               ])
+               ->add('lastName', TextType::class, [
+                   'required' => true,
+                   'label' => "Nom"
+               ])
+               ->add('firstName', TextType::class, [
+                   'required' => true,
+                   'label' => 'Prénom'
+               ])
+               ->add('email', EmailType::class, [
+                   'required' => true,
+                   'label' => "E-mail"
+               ])
+               ->add('telephone', TextType::class, [
+                   'required' => true,
+                   'label' => 'Numéro de téléphone'
+               ])
+               ->add('Submit', SubmitType::class, [
+                   'label' => "Valider la modification"
+               ]);
+
+       }
+       // creation d'un client
+       else{
+
+           $builder
+               ->setMethod('POST')
+               ->add('societe', TextType::class, [
+                   'required' => true,
+                   'label' => 'Societe'
+               ])
+               ->add('lastName', TextType::class, [
+                   'required' => true,
+                   'label' => "Nom"
+               ])
+               ->add('firstName', TextType::class, [
+                   'required' => true,
+                   'label' => 'Prénom'
+               ])
+               ->add('email', EmailType::class, [
+                   'required' => true,
+                   'label' => "E-mail"
+               ])
+               ->add('telephone', TextType::class, [
+                   'required' => true,
+                   'label' => 'Numéro de téléphone'
+               ])
+               ->add('Submit', SubmitType::class, [
+                   'label' => "Ajouter au carnet d'adresses"
+               ]);
+       }
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -9,5 +9,11 @@
     <div>{{ client.firstName  ~ ' ' ~ client.lastName}}</div>
     <div> {{ client.telephone }} </div>
 
+    <a href="{{ path('carnet_modifier', {'id' : client.id}) }}"> Modifier</a>
+
+    {% if clientForm is defined %}
+        {{ form(clientForm) }}
+    {% endif %}
+
 
 {% endblock %}

@@ -49,7 +49,7 @@ class UserController extends AbstractController
             $manager->persist($user);
             $manager->flush();
 
-            return $this->redirectToRoute('login');
+            return $this->redirectToRoute('app_login');
         }
 
 
@@ -58,6 +58,6 @@ class UserController extends AbstractController
         ]);
     }
 
-    // la route de connexion (login) et déconnexion (logout) sans gérées automatiquement dans le SecurityControlle
+    // la route de connexion (login) et déconnexion (logout) sans gérées automatiquement dans le SecurityController
 
 }

@@ -62,17 +62,30 @@ class CarnetController extends AbstractController
 
     // route permettant de visualiser une fiche client
     /**
-     * @Route("/carnet/modifier/{id}", name="carnet_view")
+     * @Route("/carnet/modifier/{id}", name="carnet_modifier")
      */
     public function modifier_client(int $id, Request $request, EntityManagerInterface $manager): Response
     {
+
         // récupération de l'objet repository permettant d'effectuer les requêtes
         $repository = $manager->getRepository(Client::class);
 
         // recherche par id (paramètre de la route)
         $client = $repository->findBy(array('id' => $id))[0];
 
+        // utilisation du même formulaire que pour la création d'un client, différenciation grâce à un paramètre
+        $form = $this->createForm(ClientFormType::class, $client, array('data' => $client));
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $manager->persist($client);
+            $manager->flush();
+
+        }
+
         return $this->render('carnet_adresse/client.twig', [
+            'clientForm' => $form->createView(),
             'client' => $client
         ]);
     }

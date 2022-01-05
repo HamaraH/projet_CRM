@@ -16,9 +16,17 @@ class HomeController extends AbstractController
      */
     public function index(EntityManagerInterface $manager): Response
     {
-        // récupération de tous les clients de l'utilisateur connecté
-        $repository = $manager->getRepository(Client::class);
-        $clients =  $repository->findBy(array('corresponding_user' => $this->getUser()->getId()));
+        // variable qui contient les clients associés à l'utilisateur, s'il y en a
+        $clients = [];
+
+        // si on est connecté
+        if($this->getUser()){
+
+            // récupération de tous les clients de l'utilisateur connecté
+            $repository = $manager->getRepository(Client::class);
+            $clients =  $repository->findBy(array('corresponding_user' => $this->getUser()->getId()));
+
+        }
 
         // passage en paramètre des clients au template twig
         return $this->render('home/home.twig', [

@@ -9,7 +9,7 @@
 
         {% for client in clients %}
 
-            <div> {{ client.telephone }}</div>
+            <div> <a href={{  path( 'carnet_view' , {'id' : client.id})}}> {{ client.telephone }}</a></div>
 
         {% endfor %}
 

@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="58157202-8d4e-43f6-b2bc-afd5b9674bfa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/Controller/NoteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/NoteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/TacheController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TacheController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/carnet_adresse/client.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/carnet_adresse/client.twig" afterDir="false" />

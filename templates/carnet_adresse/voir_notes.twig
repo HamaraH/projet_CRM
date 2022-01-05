@@ -4,9 +4,25 @@
 
 {% block body %}
 
-    {% for note in notes %}
-        <div> {{ note.content }} </div>
-    {% endfor %}
+    {% if notes is defined %}
+        <center><h3>Notes du client {{ notes.1.correspondingClient.societe }}</h3></center>
+
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                {% for note in notes %}
+                    <div class="card" style="background-color: #5eb5e0; padding: 5px; margin: 5px;"> {{ note.content }} </div>
+                {% endfor %}
+            </div>
+            <div class="col-3"></div>
+        </div>
+
+    {% else %}
+        <h3>Pas de notes pour ce client !</h3>
+    {% endif %}
+
+
+
 
 
 {% endblock %}

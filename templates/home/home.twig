@@ -3,17 +3,44 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<a href="{{ path('carnet_ajout') }}"> Ajouter une adresse</a>
 
-    {% if clients is defined %}
+    {# On affiche le contenu que si l'utilisateur est connecté #}
+    {% if app.user != null %}
 
-        {% for client in clients %}
+        {% if clients is defined %}
 
-            <div> <a href={{  path( 'carnet_view' , {'id' : client.id})}}> {{ client.telephone }}</a></div>
+            <div class="row">
+                <div class="col-8">
+                    <br/>
+                    <h2>   Carnet d'adresses</h2>
+                    <a class="btn btn-primary" href="{{ path('carnet_ajout') }}" style="margin: 30px;"> Ajouter une adresse</a>
+                </div>
+                <div class="col-4">
+                    {% for client in clients %}
 
-        {% endfor %}
+                        <div class="card" style="margin: 30px;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ client.societe }}</h5>
+                                <p class="card-text">Nom complet : {{ client.firstName }} {{ client.lastName }}</p>
+                                <p class="card-text">Adresse mail : {{ client.email }}</p>
+                                <p class="card-text">Numéro de téléphone : {{ client.telephone }}</p>
+                                <a href={{  path( 'carnet_view' , {'id' : client.id})}} class="btn btn-primary">Voir la fiche client</a>
+                            </div>
+                        </div>
 
+                    {% endfor %}
+                </div>
+            </div>
+
+
+
+        {% endif %}
+    {% else %}
+        {# sinon, on affiche simplement un message de bienvenue #}
+        <h1>Bienvenue !</h1>
+        <h3>Veuillez vous connecter pour accéder au site</h3>
     {% endif %}
+
 
 
 {% endblock %}

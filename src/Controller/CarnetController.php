@@ -14,12 +14,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CarnetController extends AbstractController
 {
+    // route qui permet d'ajouter un client au carnet d'adresses
     /**
      * @Route("/carnet/ajout", name="carnet_ajout")
      */
     public function index(Request $request, EntityManagerInterface $manager): Response
     {
-
+        // creation de l'objet client correspondant
         $client = new Client();
 
         $form = $this->createForm(ClientFormType::class, $client);

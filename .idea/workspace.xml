@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58157202-8d4e-43f6-b2bc-afd5b9674bfa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/carnet_adresse/ajout.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/carnet_adresse/ajout.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/carnet_adresse/ajout_note.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/carnet_adresse/ajout_note.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/carnet_adresse/client.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/carnet_adresse/client.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/carnet_adresse/voir_notes.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/carnet_adresse/voir_notes.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/home/home.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/home.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/login.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/login.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/register.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/register.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +179,7 @@
       <option name="presentableId" value="Default" />
       <updated>1641374621336</updated>
       <workItem from="1641374623835" duration="14212000" />
-      <workItem from="1641392202515" duration="3131000" />
+      <workItem from="1641392202515" duration="3231000" />
     </task>
     <servers />
   </component>

@@ -16,6 +16,7 @@
 
         {% if tache.etat == "A faire" %}
             <div style="background-color: red; height: 10px ; width: 10px"> </div>
+            <a href="{{ path('valider_tache', {'id' : client.id}) }}">Valider la tâche</a>
         {% else %}
             <div style="background-color: green; height: 10px ; width:10px"> </div>
         {% endif %}

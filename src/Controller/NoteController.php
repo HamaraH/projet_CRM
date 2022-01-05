@@ -68,7 +68,7 @@ class NoteController extends AbstractController
     {
 
         // récupération des notes du client
-        $anciennes_notes = $manager->getRepository(Note::class)->findBy(array('corresponding_client' => $id));
+        $anciennes_notes = $manager->getRepository(Note::class)->findBy(array('corresponding_client' => $id), array('publication_date' => 'DESC'));
 
         // on retire la note la plus récente car déjà affichée sur la fiche client
         unset($anciennes_notes[0]);

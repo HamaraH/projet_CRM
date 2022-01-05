@@ -62,7 +62,27 @@ class TacheController extends AbstractController
 
         $tache = $manager->getRepository(Tache::class)->findBy(array('corresponding_client' => $id))[0];
 
+        // suppression de la tache
         $manager->remove($tache);
+        $manager->flush();
+
+        return $this->redirectToRoute('carnet_view', array('id' => $id));
+    }
+
+    /**
+     * @Route("/tache/valider/{id}", name="valider_tache")
+     */
+    public function valider_tache(int $id, EntityManagerInterface $manager, Request $request): Response
+    {
+
+        // on récupère la tache en question
+        $tache = $manager->getRepository(Tache::class)->findBy(array('corresponding_client' => $id))[0];
+
+        //mise à jour de l'état
+        $tache->setEtat('Fait');
+
+        // sauvegarde en bdd
+        $manager->persist($tache);
         $manager->flush();
 
         return $this->redirectToRoute('carnet_view', array('id' => $id));

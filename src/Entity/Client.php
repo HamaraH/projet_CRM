@@ -47,6 +47,11 @@ class Client
      */
     private $corresponding_user;
 
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $notes;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +125,18 @@ class Client
     public function setCorrespondingUser(User $corresponding_user): self
     {
         $this->corresponding_user = $corresponding_user;
+
+        return $this;
+    }
+
+    public function getNotes(): ?array
+    {
+        return $this->notes;
+    }
+
+    public function setNotes(array $notes): self
+    {
+        $this->notes = $notes;
 
         return $this;
     }

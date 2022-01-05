@@ -15,8 +15,8 @@ class ClientFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         // modification d'un client -> le client est passé en paramètre dans options[data]
-       if(isset($options['data'])){
-
+       if($options['data']->getId()){
+            dump($options['data']);
            $builder
                ->setMethod('POST')
                ->add('societe', TextType::class, [

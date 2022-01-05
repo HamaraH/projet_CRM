@@ -10,6 +10,7 @@
     <div> {{ client.telephone }} </div>
 
     <a href="{{ path('carnet_modifier', {'id' : client.id}) }}"> Modifier</a>
+    <a href="{{ path('carnet_ajout_note', {'id' : client.id}) }}"> Ajouter une note</a>
 
     {% if clientForm is defined %}
         {{ form(clientForm) }}

@@ -4,28 +4,45 @@
 
 {% block body %}
 
-    <div>{{ client.societe }}</div>
-    <div>{{ client.firstName  ~ ' ' ~ client.lastName}}</div>
-    <div>{{ client.firstName  ~ ' ' ~ client.lastName}}</div>
-    <div> {{ client.telephone }} </div>
+    <div class="card" style="margin: 30px;">
+        <div class="card-body">
+            <h5 class="card-title">Fiche du client : {{ client.societe }}</h5>
+            <p class="card-text">Nom complet : {{ client.firstName }} {{ client.lastName }}</p>
+            <p class="card-text">Adresse mail : {{ client.email }}</p>
+            <p class="card-text">Numéro de téléphone : {{ client.telephone }}</p>
 
-     {% if lastNote is defined  and lastNote is not empty %}
+            <p class="card-text">Dernière note : {% if lastNote is defined  and lastNote is not empty %}
 
-         <div>{{ lastNote[0].content }}</div>
+            {{ lastNote[0].content }}
 
-         {% if lastNote|length > 1 %}
+            {% if lastNote|length > 1 %}
 
-            <a href="{{ path("carnet_voir_notes", {'id' : client.id}) }}"> Voir les anciennes notes</a>
-             
-         {% endif %}
+                <a class="btn btn-primary" style="margin: 20px" href="{{ path("carnet_voir_notes", {'id' : client.id}) }}"> Voir les anciennes notes</a>
 
-     {% endif %}
+            {% endif %}
 
-    <a href="{{ path('carnet_modifier', {'id' : client.id}) }}"> Modifier</a>
-    <a href="{{ path('carnet_ajout_note', {'id' : client.id}) }}"> Ajouter une note</a>
+            {% endif %}</p>
+
+        </div>
+    </div>
+
+
+
+    <a class="btn btn-primary" style="margin: 20px" href="{{ path('carnet_modifier', {'id' : client.id}) }}"> Modifier</a>
+    <a class="btn btn-primary" style="margin: 20px" href="{{ path('carnet_ajout_note', {'id' : client.id}) }}"> Ajouter une note</a>
 
     {% if clientForm is defined %}
-        {{ form(clientForm) }}
+
+        {% form_theme clientForm 'bootstrap_4_layout.html.twig' %}
+
+        <h3><center>Modifier la fiche client : </center></h3>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                {{ form(clientForm) }}
+            </div>
+            <div class="col-2"></div>
+        </div>
     {% endif %}
 
 

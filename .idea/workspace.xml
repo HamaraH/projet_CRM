@@ -5,7 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CarnetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CarnetController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ClientFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ClientFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Note.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Note.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/carnet_adresse/client.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/carnet_adresse/client.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +42,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641374621336</updated>
-      <workItem from="1641374623835" duration="10873000" />
+      <workItem from="1641374623835" duration="13370000" />
     </task>
     <servers />
   </component>

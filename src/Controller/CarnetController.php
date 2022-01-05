@@ -30,7 +30,7 @@ class CarnetController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
 
             $client->setCorrespondingUser($this->getUser());
-            $client->setNotes(array());
+
             $manager->persist($client);
             $manager->flush();
 
@@ -50,14 +50,21 @@ class CarnetController extends AbstractController
      */
     public function voir_client(int $id, Request $request, EntityManagerInterface $manager): Response
     {
-        // récupération de l'objet repository permettant d'effectuer les requêtes
-        $repository = $manager->getRepository(Client::class);
+
+        $client = $manager->getRepository(Client::class)->findBy(array('id' => $id))[0];
 
         // recherche par id (paramètre de la route)
-        $client = $repository->findBy(array('id' => $id))[0];
+        $notes = $manager->getRepository(Note::class)->findBy(array('corresponding_client' => $id), array('publication_date' => 'DESC'));
+
+        // récupération des notes du client
+        if($notes != []){
+            $notes = $notes[0];
+        }
+        dump($notes);
 
         return $this->render('carnet_adresse/client.twig', [
-            'client' => $client
+            'client' => $client,
+            'lastNote' => $notes
         ]);
     }
 
@@ -111,7 +118,10 @@ class CarnetController extends AbstractController
             // si l'utilisateur souhaite enregistrer la note
             if($form->get('valider')->isClicked()){
 
+                $client = $manager->getRepository(Client::class)->findBy(array('id' => $id))[0];
+
                 $note->setPublicationDate(new \DateTime('now'));
+                $note->setCorrespondingClient($client);
                 // sauvegarde de l'entité Note dans la bdd
                 $manager->persist($note);
                 $manager->flush();
@@ -119,11 +129,6 @@ class CarnetController extends AbstractController
                 // récupération du client correspondant
                 $repository = $manager->getRepository(Client::class);
                 $client = $repository->findBy(array('id'=> $id))[0];
-
-                // ajout de la note à l'array des notes du client
-                $notes = $client->getNotes();
-                array_push($notes, $note->getId());
-                $client->setNotes($notes);
 
                 $manager->persist($client);
                 $manager->flush();

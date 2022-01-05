@@ -9,6 +9,10 @@
     <div>{{ client.firstName  ~ ' ' ~ client.lastName}}</div>
     <div> {{ client.telephone }} </div>
 
+     {% if lastNote is defined  and lastNote is not null %}
+         <div>{{ lastNote.content }}</div>
+     {% endif %}
+
     <a href="{{ path('carnet_modifier', {'id' : client.id}) }}"> Modifier</a>
     <a href="{{ path('carnet_ajout_note', {'id' : client.id}) }}"> Ajouter une note</a>
 

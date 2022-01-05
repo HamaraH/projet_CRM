@@ -47,11 +47,6 @@ class Client
      */
     private $corresponding_user;
 
-    /**
-     * @ORM\Column(type="array")
-     */
-    private $notes;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -129,15 +124,4 @@ class Client
         return $this;
     }
 
-    public function getNotes(): ?array
-    {
-        return $this->notes;
-    }
-
-    public function setNotes(array $notes): self
-    {
-        $this->notes = $notes;
-
-        return $this;
-    }
 }

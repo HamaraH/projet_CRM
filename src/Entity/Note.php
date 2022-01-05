@@ -27,6 +27,11 @@ class Note
      */
     private $publication_date;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Client")
+     */
+    private $corresponding_client;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class Note
     public function setPublicationDate(\DateTimeInterface $date): self
     {
         $this->publication_date= $date;
+
+        return $this;
+    }
+
+    public function getCorrespondingClient(): ?Client
+    {
+        return $this->corresponding_client;
+    }
+
+    public function setCorrespondingClient(Client $client): self
+    {
+        $this->corresponding_client = $client;
 
         return $this;
     }

@@ -9,8 +9,16 @@
     <div>{{ client.firstName  ~ ' ' ~ client.lastName}}</div>
     <div> {{ client.telephone }} </div>
 
-     {% if lastNote is defined  and lastNote is not null %}
-         <div>{{ lastNote.content }}</div>
+     {% if lastNote is defined  and lastNote is not empty %}
+
+         <div>{{ lastNote[0].content }}</div>
+
+         {% if lastNote|length > 1 %}
+
+            <a href="{{ path("carnet_voir_notes", {'id' : client.id}) }}"> Voir les anciennes notes</a>
+             
+         {% endif %}
+
      {% endif %}
 
     <a href="{{ path('carnet_modifier', {'id' : client.id}) }}"> Modifier</a>

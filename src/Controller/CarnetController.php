@@ -57,9 +57,7 @@ class CarnetController extends AbstractController
         $notes = $manager->getRepository(Note::class)->findBy(array('corresponding_client' => $id), array('publication_date' => 'DESC'));
 
         // récupération des notes du client
-        if($notes != []){
-            $notes = $notes[0];
-        }
+
         dump($notes);
 
         return $this->render('carnet_adresse/client.twig', [
@@ -144,4 +142,29 @@ class CarnetController extends AbstractController
             'noteForm' => $form->createView()
         ]);
     }
+
+
+
+    // route permettant de visualiser les notes plus anciennes
+    /**
+     * @Route("/carnet/voir_notes/{id}", name="carnet_voir_notes")
+     */
+
+    public function voir_notes(int $id, Request $request, EntityManagerInterface $manager): Response
+    {
+
+        $anciennes_notes = $manager->getRepository(Note::class)->findBy(array('corresponding_client' => $id));
+
+        dump($anciennes_notes);
+
+        unset($anciennes_notes[0]);
+
+        dump($anciennes_notes);
+
+        return $this->render('carnet_adresse/voir_notes.twig', [
+            'notes' => $anciennes_notes
+        ]);
+
+    }
+
 }

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CarnetAdresseController!{% endblock %}
+
+{% block body %}
+
+    {% for note in notes %}
+        <div> {{ note.content }} </div>
+    {% endfor %}
+
+
+{% endblock %}

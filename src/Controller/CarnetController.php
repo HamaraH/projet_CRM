@@ -59,4 +59,22 @@ class CarnetController extends AbstractController
         ]);
     }
 
+
+    // route permettant de visualiser une fiche client
+    /**
+     * @Route("/carnet/modifier/{id}", name="carnet_view")
+     */
+    public function modifier_client(int $id, Request $request, EntityManagerInterface $manager): Response
+    {
+        // récupération de l'objet repository permettant d'effectuer les requêtes
+        $repository = $manager->getRepository(Client::class);
+
+        // recherche par id (paramètre de la route)
+        $client = $repository->findBy(array('id' => $id))[0];
+
+        return $this->render('carnet_adresse/client.twig', [
+            'client' => $client
+        ]);
+    }
+
 }

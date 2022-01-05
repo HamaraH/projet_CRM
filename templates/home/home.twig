@@ -4,4 +4,16 @@
 
 {% block body %}
 <a href="{{ path('carnet_ajout') }}"> Ajouter une adresse</a>
+
+    {% if clients is defined %}
+
+        {% for client in clients %}
+
+            <div> {{ client.telephone }}</div>
+
+        {% endfor %}
+
+    {% endif %}
+
+
 {% endblock %}

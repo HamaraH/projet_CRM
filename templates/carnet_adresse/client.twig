@@ -16,13 +16,14 @@
          {% if lastNote|length > 1 %}
 
             <a href="{{ path("carnet_voir_notes", {'id' : client.id}) }}"> Voir les anciennes notes</a>
-             
+
          {% endif %}
 
      {% endif %}
 
     <a href="{{ path('carnet_modifier', {'id' : client.id}) }}"> Modifier</a>
     <a href="{{ path('carnet_ajout_note', {'id' : client.id}) }}"> Ajouter une note</a>
+    <a href="{{ path('ajout_tache', {'id' : client.id}) }}"> Ajouter une tâche</a>
 
     {% if clientForm is defined %}
         {{ form(clientForm) }}

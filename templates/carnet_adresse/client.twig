@@ -1,8 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CarnetAdresseController!{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function validation(){
+            return window.confirm("Etes vous sur de vouloir supprimer cette tâche?");
+        }
+
+    </script>
+{% endblock %}
 
 {% block body %}
+
+    {% for tache in taches %}
+
+        {% if tache.etat == "A faire" %}
+            <div style="background-color: red; height: 10px ; width: 10px"> </div>
+        {% else %}
+            <div style="background-color: green; height: 10px ; width:10px"> </div>
+        {% endif %}
+
+        <a href="{{ path('suppression_tache', {'id' : client.id}) }}" onclick=" return validation()">
+            <img src="{{ asset('images/icone_suppression.png') }}" alt="icone_suppression" style="height: 20px; width: 20px">
+        </a>
+        <div>{{ tache.id }}</div>
+
+    {% endfor %}
 
     <div>{{ client.societe }}</div>
     <div>{{ client.firstName  ~ ' ' ~ client.lastName}}</div>

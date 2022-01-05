@@ -4,7 +4,12 @@
     <list default="true" id="58157202-8d4e-43f6-b2bc-afd5b9674bfa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CarnetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CarnetController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/NoteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/NoteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TacheController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TacheController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Tache.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Tache.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/TacheType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TacheType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/carnet_adresse/client.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/carnet_adresse/client.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tache/index.html.twig" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +45,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641374621336</updated>
-      <workItem from="1641374623835" duration="14815000" />
+      <workItem from="1641374623835" duration="18171000" />
     </task>
     <servers />
   </component>

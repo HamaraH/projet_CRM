@@ -4,10 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Client;
 use App\Entity\Note;
+use App\Entity\Tache;
 use App\Form\ClientFormType;
-use App\Form\NoteType;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -55,12 +54,10 @@ class CarnetController extends AbstractController
 
         // recherche par id (paramètre de la route)
         $notes = $manager->getRepository(Note::class)->findBy(array('corresponding_client' => $id), array('publication_date' => 'DESC'));
-
-        // récupération des notes du client
-
-        dump($notes);
+        $taches = $manager->getRepository(Tache::class)->findBy(array('corresponding_client' => $id), array('publication_date' => 'ASC'));
 
         return $this->render('carnet_adresse/client.twig', [
+            'taches' => $taches,
             'client' => $client,
             'lastNote' => $notes
         ]);

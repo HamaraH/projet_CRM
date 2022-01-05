@@ -59,8 +59,6 @@ class NoteController extends AbstractController
         ]);
     }
 
-
-
     // route permettant de visualiser les notes plus anciennes
     /**
      * @Route("/carnet/voir_notes/{id}", name="carnet_voir_notes")
@@ -69,13 +67,11 @@ class NoteController extends AbstractController
     public function voir_notes(int $id, Request $request, EntityManagerInterface $manager): Response
     {
 
+        // récupération des notes du client
         $anciennes_notes = $manager->getRepository(Note::class)->findBy(array('corresponding_client' => $id));
 
-        dump($anciennes_notes);
-
+        // on retire la note la plus récente car déjà affichée sur la fiche client
         unset($anciennes_notes[0]);
-
-        dump($anciennes_notes);
 
         return $this->render('carnet_adresse/voir_notes.twig', [
             'notes' => $anciennes_notes

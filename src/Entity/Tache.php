@@ -27,6 +27,22 @@ class Tache
      */
     private $publication_date;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $titre;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Client")
+     */
+    private $corresponding_client;
+
+
+    /**
+     * @ORM\Column(type="string", length=40)
+     */
+    private $etat;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +68,44 @@ class Tache
     public function setPublicationDate(\DateTimeInterface $publication_date): self
     {
         $this->publication_date = $publication_date;
+
+        return $this;
+    }
+
+    public function getTitre(): ?string
+    {
+        return $this->titre;
+    }
+
+    public function setTitre(string $titre): self
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
+
+    public function getCorrespondingClient(): Client
+    {
+
+        return $this->corresponding_client;
+
+    }
+
+    public function setCorrespondingClient(Client $client): self
+    {
+        $this->corresponding_client = $client;
+
+        return $this;
+    }
+
+    public function getEtat(): ?string
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(string $etat): self
+    {
+        $this->etat = $etat;
 
         return $this;
     }

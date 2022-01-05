@@ -15,7 +15,6 @@ class NoteType extends AbstractType
     {
         $builder
             ->add('content', TextareaType::class, [
-                'required' => true,
                 'label' => 'Saisissez le contenu de la note '
             ])
             ->add('valider', SubmitType::class, [

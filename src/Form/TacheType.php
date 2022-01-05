@@ -18,15 +18,12 @@ class TacheType extends AbstractType
         $builder
             ->add('titre', TextType::class, [
                 'label' => 'Titre',
-                'required' => true
             ])
             ->add('content', TextareaType::class, [
                 'label' => 'Description de la tâche',
-                'required' => true
             ])
             ->add('publication_date', DateType::class, [
                 'label' => 'Date de rendu de la tâche',
-                'required' => true,
                 'format' => 'dd-MM-yyyy',
                 'input'  => 'datetime_immutable'
             ])

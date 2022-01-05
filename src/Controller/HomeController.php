@@ -26,6 +26,7 @@ class HomeController extends AbstractController
             $repository = $manager->getRepository(Client::class);
             $clients =  $repository->findBy(array('corresponding_user' => $this->getUser()->getId()));
 
+
         }
 
         // passage en paramètre des clients au template twig

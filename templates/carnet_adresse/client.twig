@@ -12,53 +12,77 @@
 
 {% block body %}
 
-    {% for tache in taches %}
+    <div class="row">
+        <div class="col-5">
+            <center><h3>Liste des tâches : </h3></center>
+            {% if taches is defined and taches is not null %}
+                {% for tache in taches %}
+                    <div class="card" style="margin: 20px">
+                        <div>Nom : {{ tache.titre }}</div>
+                        <div>Description : {{ tache.content }}</div>
+                        <div>Date : {{ tache.publicationDate|date("m/d/Y") }}</div>
 
-        {% if tache.etat == "A faire" %}
-            <div style="background-color: red; height: 10px ; width: 10px"> </div>
+                    {% if tache.etat == "A faire" %}
+                       Indicateur d'état : <span style="background-color: red; height: 15px ; width: 15px"> </span>
 
-            <a href="{{ path('valider_tache', {'id_tache' : tache.id}) }}">Valider la tâche</a>
-        {% else %}
-            <div style="background-color: green; height: 10px ; width:10px"> </div>
-        {% endif %}
+                    {% else %}
+                        Indicateur d'état :
+                        <div style="background-color: green; height: 15px ; width:15px"> </div>
+                    {% endif %}
 
-        <a href="{{ path('suppression_tache', {'id_tache' : tache.id}) }}" onclick=" return validation()">
-            <img src="{{ asset('images/icone_suppression.png') }}" alt="icone_suppression" style="height: 20px; width: 20px">
-        </a>
-        <div>{{ tache.id }}</div>
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-3">
+                            <a href="{{ path('suppression_tache', {'id_tache' : tache.id}) }}" onclick=" return validation()">
+                                <img src="{{ asset('images/icone_suppression.png') }}" alt="icone_suppression" style="height: 20px; width: 20px">
+                            </a>
+                        </div>
+                        <div class="col-3">
+                            {% if tache.etat == "A faire" %}
+                            <a href="{{ path('valider_tache', {'id_tache' : tache.id}) }}">
+                                <img src="{{ asset('images/check_icon.png') }}" alt="icone_suppression" style="height: 20px; width: 20px">
+                            </a>
+                            {% endif %}
+                        </div>
+                        <div class="col-3"></div>
+                    </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+                </div>
 
-    {% endfor %}
+        <div class="col-6">
+            <div class="card" style="margin: 30px;">
+                <div class="card-body">
+                    <h5 class="card-title">Fiche du client : {{ client.societe }}</h5>
+                    <p class="card-text">Nom complet : {{ client.firstName }} {{ client.lastName }}</p>
+                    <p class="card-text">Adresse mail : {{ client.email }}</p>
+                    <p class="card-text">Numéro de téléphone : {{ client.telephone }}</p>
 
-    <div class="card" style="margin: 30px;">
-        <div class="card-body">
-            <h5 class="card-title">Fiche du client : {{ client.societe }}</h5>
-            <p class="card-text">Nom complet : {{ client.firstName }} {{ client.lastName }}</p>
-            <p class="card-text">Adresse mail : {{ client.email }}</p>
-            <p class="card-text">Numéro de téléphone : {{ client.telephone }}</p>
+                    <p class="card-text">Dernière note : {% if lastNote is defined  and lastNote is not empty %}
 
-            {% if lastNote is defined  and lastNote is not empty %}
+                            {{ lastNote[0].content }}
 
-                <p class="card-text">Dernière note :
+                            {% if lastNote|length > 1 %}
 
-            {{ lastNote[0].content }}
+                                <a class="btn btn-primary" style="margin: 20px" href="{{ path("carnet_voir_notes", {'id' : client.id}) }}"> Voir les anciennes notes</a>
+                            {% endif %}
+            {% else %}
+
+                    <p class="card-text">Ce client n'a aucune note </p>
+
+
+                    {% endif %}
                 </p>
 
-            {% if lastNote|length > 1 %}
+                    <a class="btn btn-primary" style="margin: 20px" href="{{ path('carnet_modifier', {'id' : client.id}) }}"> Modifier</a>
+                    <a class="btn btn-primary" style="margin: 20px" href="{{ path('carnet_ajout_note', {'id' : client.id}) }}"> Ajouter une note</a>
+                    <a class="btn btn-primary" style="margin: 20px" href="{{ path('ajout_tache', {'id' : client.id}) }}"> Ajouter une tâche</a>
 
-                <a class="btn btn-primary" style="margin: 20px" href="{{ path("carnet_voir_notes", {'id' : client.id}) }}"> Voir les anciennes notes</a>
-
-            {% endif %}
-
-            {% else %}
-                <p class="card-text">Ce client n'a aucune note </p>
-            {% endif %}
-
-
-            <a class="btn btn-primary" style="margin: 20px" href="{{ path('carnet_modifier', {'id' : client.id}) }}"> Modifier</a>
-            <a class="btn btn-primary" style="margin: 20px" href="{{ path('carnet_ajout_note', {'id' : client.id}) }}"> Ajouter une note</a>
-            <a class="btn btn-primary" style="margin: 20px" href="{{ path('ajout_tache', {'id' : client.id}) }}"> Ajouter une tâche</a>
-
+                </div>
+            </div>
         </div>
+
     </div>
 
     {% if clientForm is defined %}

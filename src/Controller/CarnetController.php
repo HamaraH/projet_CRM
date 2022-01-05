@@ -76,6 +76,7 @@ class CarnetController extends AbstractController
 
         // recherche par id (paramètre de la route)
         $client = $repository->findBy(array('id' => $id))[0];
+        $taches = $manager->getRepository(Tache::class)->findBy(array('corresponding_client' => $id), array('publication_date' => 'ASC'));
 
         // utilisation du même formulaire que pour la création d'un client, différenciation grâce à un paramètre
         $form = $this->createForm(ClientFormType::class, $client);
@@ -91,7 +92,8 @@ class CarnetController extends AbstractController
 
         return $this->render('carnet_adresse/client.twig', [
             'clientForm' => $form->createView(),
-            'client' => $client
+            'client' => $client,
+            'taches' => $taches
         ]);
     }
 

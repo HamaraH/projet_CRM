@@ -18,7 +18,7 @@ class Note
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=5000)
+     * @ORM\Column(type="string", length=5000, nullable=true)
      */
     private $content;
 

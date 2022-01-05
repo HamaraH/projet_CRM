@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
-
 {% block body %}
 
     {# On affiche le contenu que si l'utilisateur est connecté #}
@@ -37,8 +35,8 @@
         {% endif %}
     {% else %}
         {# sinon, on affiche simplement un message de bienvenue #}
-        <h1>Bienvenue !</h1>
-        <h3>Veuillez vous connecter pour accéder au site</h3>
+        <h1>Bienvenue sur CRM, l'application de management de clients!</h1>
+        <h3>Veuillez vous connecter pour accéder au site et commencer à organiser votre carnet d'adresses !</h3>
     {% endif %}
 
 

@@ -55,12 +55,13 @@ class TacheController extends AbstractController
     }
 
     /**
-     * @Route("/tache/supprimer/{id}", name="suppression_tache")
+     * @Route("/tache/supprimer/{id_tache}", name="suppression_tache")
      */
-    public function supprimer_tache(int $id, EntityManagerInterface $manager, Request $request): Response
+    public function supprimer_tache(int $id_tache, EntityManagerInterface $manager, Request $request): Response
     {
 
-        $tache = $manager->getRepository(Tache::class)->findBy(array('corresponding_client' => $id))[0];
+        $tache = $manager->getRepository(Tache::class)->findBy(array('id' => $id_tache))[0];
+        $id = $tache->getCorrespondingClient()->getId();
 
         // suppression de la tache
         $manager->remove($tache);
@@ -70,13 +71,15 @@ class TacheController extends AbstractController
     }
 
     /**
-     * @Route("/tache/valider/{id}", name="valider_tache")
+     * @Route("/tache/valider/{id_tache}", name="valider_tache")
      */
-    public function valider_tache(int $id, EntityManagerInterface $manager, Request $request): Response
+    public function valider_tache(int $id_tache, EntityManagerInterface $manager, Request $request): Response
     {
 
         // on récupère la tache en question
-        $tache = $manager->getRepository(Tache::class)->findBy(array('corresponding_client' => $id))[0];
+        $tache = $manager->getRepository(Tache::class)->findBy(array('id' => $id_tache))[0];
+        dump($tache);
+        $id = $tache->getCorrespondingClient()->getId();
 
         //mise à jour de l'état
         $tache->setEtat('Fait');

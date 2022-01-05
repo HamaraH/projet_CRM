@@ -2,17 +2,19 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}CRM{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
             {{ encore_entry_link_tags('app') }}
+            <link rel="stylesheet" type="text/css" href="{{asset('css/global.css') }}" />
         {% endblock %}
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+
     </head>
     <body>
 
@@ -47,7 +49,7 @@
                         <a class="nav-link" href="/logout">Se déconnecter</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="/">Carnet d'adresse</a>
+                        <a class="nav-link" href="/">Carnet d'adresses</a>
                     </li>
                 </ul>
             </div>
